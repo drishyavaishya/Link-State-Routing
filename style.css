@@ -1,0 +1,51 @@
+
+#graph{
+    height: 100%;
+}
+
+#buttons{
+    margin-left: 14%;
+}
+
+#align{
+    margin-left: 43%;
+}
+
+/* table {
+    border-collapse: collapse;
+    width: 100%;
+  } */
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  
+  th:last-child, td:last-child {
+    border-right: none;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+#message
+{
+    text-align: center;
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#calculatepath
+{
+    text-align: center;
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
