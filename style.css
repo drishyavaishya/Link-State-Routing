@@ -6,7 +6,7 @@
 #align{
     margin-left: 43%;
 }
-
+/* designing of tables*/
   th, td {
     padding: 10px;
     text-align: left;
@@ -27,6 +27,7 @@
     background-color: #f2f2f2;
   }
 
+/* designing of display of packets recieved info*/
 #message
 {
     text-align: center;
@@ -34,6 +35,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/*designing of display of the message "calculate shortest distance and path" */
 #calculatepath
 {
     text-align: center;
