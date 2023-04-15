@@ -1,8 +1,4 @@
 
-#graph{
-    height: 100%;
-}
-
 #buttons{
     margin-left: 14%;
 }
@@ -11,11 +7,6 @@
     margin-left: 43%;
 }
 
-/* table {
-    border-collapse: collapse;
-    width: 100%;
-  } */
-  
   th, td {
     padding: 10px;
     text-align: left;
