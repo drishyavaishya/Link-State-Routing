@@ -1,6 +1,6 @@
 
 //This function generated graph with n number of nodes
-
+let p=2;
 function generateWeightedGraph(n) {
     // create an empty adjacency matrix
     const matrix = [];
@@ -55,18 +55,18 @@ function generateWeightedGraph(n) {
 
   //This function is an implementation of dijksta's algorithm to calculate shortest distance and shortest path of each node from a given node.
 
-  function dijkstra(graph, start) {
+  function dijkstra(graph, start,node) {
     const n = graph.length;
     const visited = new Array(n).fill(false);
-    const dist = new Array(n).fill(Infinity);
+    const dist = new Array(n).fill(1e9);
     const path = new Array(n).fill(null);
     dist[start] = 0;
   
-    for (let i = 0; i < n - 1; i++) {
+    for (let i = 0; i < node; i++) {
       // find the vertex with the minimum distance
-      let minDist = Infinity;
+      let minDist = 1e9;
       let u = -1;
-      for (let j = 0; j < n; j++) {
+      for (let j = 0; j < node; j++) {
         if (!visited[j] && dist[j] < minDist) {
           minDist = dist[j];
           u = j;
@@ -74,13 +74,15 @@ function generateWeightedGraph(n) {
       }
       // mark the vertex as visited
       visited[u] = true;
-  
-      // update the distance and path of adjacent vertices
-      for (let v = 0; v < n; v++) {
+      //update the distance and path of adjacent vertices
+      if(u!=-1)
+      {
+          for (let v = 0; v < n; v++) {
         if (!visited[v] && graph[u][v] > 0 && dist[u] + graph[u][v] < dist[v]) {
           dist[v] = dist[u] + graph[u][v];
           path[v] = u;
         }
+      }
       }
     }
   
@@ -105,15 +107,6 @@ function generateWeightedGraph(n) {
   }
   
 
-  //This function calls dijkstra for every node in the graph
-  function shortestPath(graph) {
-    const n = graph.length;
-    const shortestPaths = new Array(n);
-    for (let i = 0; i < n; i++) {
-      shortestPaths[i] = dijkstra(graph, i);
-    }
-    return shortestPaths;
-  }
   
 var cols=window.localStorage.getItem("noOfNodes");
 cols++;
@@ -179,7 +172,7 @@ function displayinfo()
   tbody.innerHTML = "";
   
   // Create new rows and columns
-  for (var i = 0; i < rows; i++) {
+  for (var i = 0; i < p; i++) {
     var row = tbody.insertRow(i);
     for (var j = 0; j < cols; j++) 
     {
@@ -240,36 +233,35 @@ function verifyTable(){
   };
 
 
-    const shortestPaths = shortestPath(graph);
-    console.log(shortestPaths);
-  
-    for(let i=0;i<shortestPaths.length;i++)
-    {
-        console.log(shortestPaths[i]);
-    }
-
-    // console.log(shortestPaths[0][0]);
-    console.log(shortestPaths[0]['dist']);
-    console.log(shortestPaths[0].dist);
-    var x = shortestPaths[0].dist.length;
+    const shortestPaths = dijkstra(graph,0,p);
+    var x = shortestPaths.dist.length;
     let a = 0;
 
-    for(let i=0;i<shortestPaths[0].dist.length;i++){
-      if(shortestPaths[0].dist[i] == distance[i]){
+    for(let i=0;i<x;i++){
+      if(shortestPaths.dist[i] == distance[i]){
         console.log("success");
       }else{
         console.log("fail");
         a=1;
       }
     }
-    
-    for(let i=0;i<shortestPaths[0].paths.length;i++){
+    var y=shortestPaths.paths.length;
+    console.log(shortestPaths.dist);
+    console.log(shortestPaths.paths);
+    for(let i=0;i<shortestPaths.paths.length;i++){
       var str = "";
-      for(let j=0;j<shortestPaths[0].paths[i].length;j++){
-        let z = shortestPaths[0].paths[i][j];
-        let x = 65 + z;
-        var t =String.fromCharCode(x);
-        str += t;
+      if(shortestPaths.paths[i]!=null)
+      {
+        for(let j=0;j<shortestPaths.paths[i].length;j++){
+          let z = shortestPaths.paths[i][j];
+          let x = 65 + z;
+          var t =String.fromCharCode(x);
+          str += t;
+        }
+      }
+      else
+      {
+        str="null";
       }
       if(str == path[i]){
         console.log("success");
@@ -285,20 +277,16 @@ function verifyTable(){
       document.getElementById("verifyButton").innerHTML ="Try Again!";
     }else{
       // welldone
-      
-      for (let i = 1; i < n; i++) {
-        graph[i][i] = 0;
-      for (let j = i + 1; j < n; j++) {
-        if (Math.random() < 0.5) {
-          // connect vertices i and j with a random weight
-          const weight = Math.floor(Math.random() * 10) + 1; // random weight between 1 and 10
-          graph[i][j] = weight;
-          graph[j][i] = weight;
-        }
+      p++;
+      if(p<=rows)
+      {
+        displayinfo();
       }
-    }
-    displayinfo();
-    document.getElementById("message").innerHTML = "Link State Updated!";
+      else
+      {
+        alert("WELL DONE!");
+        window.location.href = "index.html";
+      }
     }
 
 }
@@ -359,4 +347,3 @@ function redirecttopage()
 {
   window.location.href = "index.html";
 }
-  
