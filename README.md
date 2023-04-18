@@ -37,6 +37,6 @@ All about Its Working!
 
 4) The Send/Receive button will flood the network with a packet and receive packets from other routers.
 
-5)The website asks the user to calculate the shortest path and shortest distance and verifies it.
+5 The website asks the user to calculate the shortest path and shortest distance and verifies it.
 
 6) If the response is correct, the user will be redirected to the home page. Otherwise, the website will prompt the user to try again.
