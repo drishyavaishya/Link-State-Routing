@@ -1,5 +1,5 @@
 
-//This function generated graph with n number of nodes
+
 function generateWeightedGraph(n) {
     // create an empty adjacency matrix
     const matrix = [];
@@ -51,8 +51,9 @@ function generateWeightedGraph(n) {
     return matrix;
   }
   
+  // example usage
 
-  //This function is an implementation of dijksta's algorithm to calculate shortest distance and shortest path of each node from a given node.
+  
   function dijkstra(graph, start) {
     const n = graph.length;
     const visited = new Array(n).fill(false);
@@ -102,7 +103,6 @@ function generateWeightedGraph(n) {
     return { dist, paths };
   }
   
-//This function calls dijkstra for every node in the graph
   function shortestPath(graph) {
     const n = graph.length;
     const shortestPaths = new Array(n);
@@ -113,12 +113,25 @@ function generateWeightedGraph(n) {
   }
   
 
-var cols=window.localStorage.getItem("noOfNodes"); //accessing the input of number of nodes from user
+  // function doit(){
+
+  //   var numOfNodes = parseInt(document.getElementById("no-of-nodes").value);
+
+  //   const graph = generateWeightedGraph(numOfNodes);
+  //   console.log(graph);
+      
+  //   const shortestPaths = shortestPath(graph);
+  //   console.log(shortestPaths);
+  
+  //   for(let i=0;i<shortestPaths.length;i++)
+  //   {
+  //       console.log(shortestPaths[i]);
+  //   }
+  // }
+var cols=window.localStorage.getItem("noOfNodes");
 cols++;
 var rows = cols-1;
-const graph=generateWeightedGraph(cols-1); //generating a random graph.
-
-//This function creates a table which provides info about the chosen node.
+const graph=generateWeightedGraph(cols-1);
 function createTable(rows,cols,id,tag) 
 {
   var table = document.getElementById(id);
@@ -164,8 +177,7 @@ function createTable(rows,cols,id,tag)
   }
 }
 createTable(2,cols,"a-info","tbody");
-
-//This funtion displays all packets recieved when send/recieve button is clicked by the user.
+//createTable(rows,cols,"myTable","tbody");
 function displayinfo()
 {
   document.getElementById("message").innerHTML = "Packets Recieved!";
@@ -218,7 +230,7 @@ function displayinfo()
   document.getElementById("verifyButton").className += " btn-dark ";
 }
 
-//This function verifies the input given by user onclick of verify button
+
 function verifyTable(){
   var n = document.getElementsByClassName('shortest-distance').length;
   console.log(n);
@@ -281,16 +293,24 @@ function verifyTable(){
       document.getElementById("verifyButton").innerHTML ="Try Again!";
     }else{
       // welldone
-      alert("Well Done!!");
-      window.location.href = "http://127.0.0.1:5500/";
+      
+      for (let i = 1; i < n; i++) {
+        graph[i][i] = 0;
+      for (let j = i + 1; j < n; j++) {
+        if (Math.random() < 0.5) {
+          // connect vertices i and j with a random weight
+          const weight = Math.floor(Math.random() * 10) + 1; // random weight between 1 and 10
+          graph[i][j] = weight;
+          graph[j][i] = weight;
+        }
+      }
     }
-
-
-
+    displayinfo();
+    document.getElementById("message").innerHTML = "Link State Updated!";
+    }
 
 }
 
-//This function creates an input table for user to enter shortest path and distance.
 function inputTable()
 {
   var table = document.getElementById("myPath");
@@ -339,5 +359,9 @@ function inputTable()
       }
     }
   }
+}
+function redirecttopage()
+{
+  window.location.href = "index.html";
 }
   
