@@ -1,0 +1,71 @@
+
+#graph{
+    height: 100%;
+}
+
+#buttons{
+    margin-left: 14%;
+}
+
+#align{
+    margin-left: 43%;
+}
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: large;
+    font-weight: 500;
+  }
+
+#message
+{
+    text-align: center;
+    margin: 10px;
+}
+
+#calculatepath
+{
+    text-align: center;
+    margin: 10px;
+}
+.navbar
+{
+  font-size: xx-large;
+  background-color:black
+}
+#display-text
+{
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  margin: 6%;
+  text-decoration:solid;
+  font-size: medium;
+  font-weight:600;
+}
+
+#demo-start
+{
+  margin-top: 2%;
+  text-decoration:solid;
+  font-size:xx-large;
+}
+
+#pppp
+{
+  padding-top:2%;
+}
+
+#aaaa
+{
+  background-color:rgb(241, 238, 241);
+}
+
+@keyframes example {
+  0% {color:white;}
+  50% {color:darkblue;}
+  100% {color:black;}
+}
